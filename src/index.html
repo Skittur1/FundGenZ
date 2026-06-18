@@ -9,5 +9,43 @@
 </head>
 <body>
   <app-root></app-root>
+  <script>
+    (function(){
+      let lastY = (typeof window !== 'undefined') ? (window.scrollY || 0) : 0;
+      const hideThreshold = 30;
+      const showThreshold = 60;
+      let ticking = false;
+      const navSelector = '.navbar';
+
+      function onScroll(){
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const nav = document.querySelector(navSelector);
+          if (!nav) { ticking = false; return; }
+          const y = window.scrollY || 0;
+          const diff = y - lastY;
+          const currentlyHidden = nav.classList.contains('hidden');
+          let hide = currentlyHidden;
+
+          if (!currentlyHidden) {
+            if (diff > hideThreshold && y > 100) hide = true;
+          } else {
+            if (lastY - y > showThreshold) hide = false;
+          }
+
+          nav.classList.toggle('hidden', hide);
+          lastY = Math.max(0, y);
+          ticking = false;
+        });
+      }
+
+      if (typeof window !== 'undefined') {
+        window.addEventListener('scroll', onScroll, { passive: true });
+        // run once to set initial state
+        onScroll();
+      }
+    })();
+  </script>
 </body>
 </html>

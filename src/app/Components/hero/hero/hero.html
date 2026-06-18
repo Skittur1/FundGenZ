@@ -1,0 +1,88 @@
+<section class="hero" (mousemove)="mouseMove($event)">
+
+<video 
+  class="hero-video"
+  autoplay
+  muted
+  loop
+  playsinline>
+
+  <source src="assets/videos/hero-bg.mp4" type="video/mp4">
+
+</video>
+
+
+  <div class="overlay"></div>
+
+
+  <div class="hero-content"
+       [style.transform]="parallax">
+
+    <h1>
+      Build The Future
+      <span>With Technology</span>
+    </h1>
+
+
+    <p>
+      We create scalable software solutions,
+      AI products and modern digital experiences.
+    </p>
+
+
+    <div class="actions">
+
+      <button class="primary">
+        Start Project
+      </button>
+
+
+      <button class="secondary">
+        Explore Services
+      </button>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="scroll">
+    ↓
+  </div>
+
+
+</section>
+
+
+<!-- NEXT SECTION WITH STATIC BACKGROUND IMAGE -->
+<section class="next-section">
+  
+  <!-- STATIC BACKGROUND IMAGE (visible below hero) -->
+  <div class="section-bg-image"></div>
+  
+  <!-- OVERLAY for text readability -->
+  <div class="section-overlay"></div>
+  
+  <!-- SECTION CONTENT -->
+  <div class="section-content">
+    <h2>What We Offer</h2>
+    <p>Your content goes here. This section will have the static background image.</p>
+    
+    <div class="features">
+      <div class="feature-card">
+        <h3>Feature 1</h3>
+        <p>Description of feature 1</p>
+      </div>
+      <div class="feature-card">
+        <h3>Feature 2</h3>
+        <p>Description of feature 2</p>
+      </div>
+      <div class="feature-card">
+        <h3>Feature 3</h3>
+        <p>Description of feature 3</p>
+      </div>
+    </div>
+  </div>
+  
+</section>

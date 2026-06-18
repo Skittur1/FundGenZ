@@ -1,0 +1,214 @@
+<footer #footerElement 
+        class="footer"
+        [class.visible]="isVisible"
+        (mousemove)="isBrowser && onMouseMove($event)">
+  
+  <!-- Mouse-follow glow (only in browser) -->
+  <div class="footer-glow" *ngIf="isBrowser"></div>
+
+  <!-- Main Footer Content -->
+  <div class="footer-main">
+    <div class="footer-grid">
+      
+      <!-- Brand Column -->
+      <div class="footer-column brand-column">
+        <div class="brand" (click)="scrollToTop()">
+          <div class="brand-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1.1 0 2 .9 2 2v1h3a2 2 0 0 1 2 2v2h-2V7h-3v2h-2V7a4 4 0 0 0-4-4H8V2h4zM6 9v11a2 2 0 0 0 2 2h8v-2H8V9H6zm14 0v2h2v-2a2 2 0 0 0-2-2h-3v2h3z"/></svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">FundGen</span>
+            <span class="brand-highlight">Z</span>
+          </div>
+        </div>
+        <p class="brand-description">
+          Helping businesses raise capital, build stronger brands & create digital presence.
+        </p>
+        <div class="brand-tagline">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden style="width:18px;height:18px;margin-right:8px"><path d="M12 2l1.9 4.4L19 8l-3.1 2.2L16.9 15 12 12.8 7.1 15l1-4.8L5 8l5.1-1.6L12 2z"/></svg>
+          <span>Investor-ready strategies • Scalable digital presence</span>
+        </div>
+        <div class="social-icons">
+          <a *ngFor="let social of socialMedia; trackBy: trackByFn"
+             [href]="social.url"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="social-link"
+             [style.color]="social.color"
+             [attr.aria-label]="social.name">
+            <ng-container [ngSwitch]="social.name">
+              <svg *ngSwitchCase="'LinkedIn'" class="icon" viewBox="0 0 24 24" aria-hidden>
+                <path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 24V7h5v17H0zM7 7h4.8v2.3h.1c.7-1.2 2.4-2.3 4.9-2.3C23.4 7 24 11 24 15.8V24h-5v-7.4c0-1.8 0-4.1-2.5-4.1S14 15 14 24h-5V7z"/></svg>
+              <svg *ngSwitchCase="'Twitter'" class="icon" viewBox="0 0 24 24" aria-hidden>
+                <path d="M22.46 6c-.77.35-1.6.59-2.46.7a4.3 4.3 0 0 0 1.88-2.37 8.59 8.59 0 0 1-2.73 1.04 4.28 4.28 0 0 0-7.3 3.9A12.14 12.14 0 0 1 3.15 4.6a4.28 4.28 0 0 0 1.33 5.72 4.23 4.23 0 0 1-1.94-.54v.05a4.28 4.28 0 0 0 3.43 4.2c-.47.13-.97.2-1.48.2-.36 0-.7-.03-1.04-.1a4.29 4.29 0 0 0 4 2.98A8.6 8.6 0 0 1 2 19.54a12.14 12.14 0 0 0 6.56 1.92c7.88 0 12.2-6.53 12.2-12.2v-.56A8.7 8.7 0 0 0 24 5.1a8.6 8.6 0 0 1-2.54.7z"/></svg>
+              <svg *ngSwitchCase="'YouTube'" class="icon" viewBox="0 0 24 24" aria-hidden>
+                <path d="M23.5 6.2s-.2-1.6-.8-2.3c-.8-1-1.7-1-2.1-1.1C16.7 2.5 12 2.5 12 2.5h-.1s-4.7 0-8.6.3c-.4 0-1.3.1-2.1 1.1C.2 4.6 0 6.2 0 6.2S-.1 8 .1 9.8c.2 1.9.8 3.1.8 3.1s.6 1.3 2.5 2.1c1.8.8 7.6.8 7.6.8s4.7 0 8.6-.3c.4 0 1.3-.1 2.1-1.1 0 0 .6-1.2.8-3.1.2-1.9.1-3.6.1-3.6zM9.8 14.6V7.4l5.6 3.6-5.6 3.6z"/></svg>
+              <svg *ngSwitchCase="'Instagram'" class="icon" viewBox="0 0 24 24" aria-hidden>
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.2A4.8 4.8 0 1 0 16.8 13 4.8 4.8 0 0 0 12 8.2zm6.4-2.4a1.2 1.2 0 1 0 1.2 1.2 1.2 1.2 0 0 0-1.2-1.2z"/></svg>
+              <svg *ngSwitchCase="'Facebook'" class="icon" viewBox="0 0 24 24" aria-hidden>
+                <path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8.1v-3h2.4V9.2c0-2.4 1.4-3.7 3.5-3.7 1 0 2 .08 2 .08v2.2h-1.1c-1.1 0-1.4.66-1.4 1.3v1.6h2.4l-.4 3h-2v7A10 10 0 0 0 22 12z"/></svg>
+              <svg *ngSwitchCase="'WhatsApp'" class="icon" viewBox="0 0 24 24" aria-hidden>
+                <path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .2 5.8.2 12.8c0 2.2.6 4.2 1.6 6L0 24l5.7-1.5a12.6 12.6 0 0 0 6.3 1.6c6.6 0 11.9-5.8 11.9-12.8 0-3.4-1.3-6.6-3.4-8.8zM12 20.6a9.5 9.5 0 0 1-5.1-1.4l-.4-.3-3.3.9.9-3.2-.3-.4A9.4 9.4 0 1 1 12 20.6zM17 14.3c-.3-.1-1.8-.9-2-.9s-.4-.1-.6.1-.7.9-.9 1.1-.3.2-.6.1c-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.4.2-.6.2-.2.3-.4.5-.6.2-.2.2-.3.3-.5.1-.1 0-.3-.1-.5-.1-.2-1.6-3-2.3-3.9-.6-.8-1.3-.7-1.8-.7-.5 0-1 .1-1.5.1-.5 0-1 .3-1.6.8-.6.5-1 1.3-1 2.3 0 1 .6 2.1 1.5 3.1.9 1 2 2 3.4 2.9 1.4.9 2.7 1.3 3.2 1.5.5.2 1 .2 1.4.1.4-.1 1.8-.7 2.1-1 .3-.3.3-.7.2-.9-.1-.1-.2-.2-.5-.3z"/></svg>
+              <svg *ngSwitchDefault class="icon" viewBox="0 0 24 24" aria-hidden>
+                <circle cx="12" cy="12" r="10" /></svg>
+            </ng-container>
+          </a>
+        </div>
+      </div>
+
+      <!-- Navigation Column -->
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li *ngFor="let link of navLinks; trackBy: trackByFn">
+            <a [routerLink]="link.path" routerLinkActive="active">
+              <span class="link-icon">
+                <ng-container [ngSwitch]="link.label">
+                  <svg *ngSwitchCase="'Home'" class="icon" viewBox="0 0 24 24"><path d="M12 3l9 8h-3v9h-12v-9H3z"/></svg>
+                  <svg *ngSwitchCase="'About Us'" class="icon" viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zm0 2c-4 0-8 2-8 4v2h16v-2c0-2-4-4-8-4z"/></svg>
+                  <svg *ngSwitchCase="'What We Do'" class="icon" viewBox="0 0 24 24"><path d="M13 2L3 14h6v6l10-12h-6z"/></svg>
+                  <svg *ngSwitchCase="'Team'" class="icon" viewBox="0 0 24 24"><path d="M16 11c1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3 1.3 3 3 3zM8 11c1.7 0 3-1.3 3-3S9.7 5 8 5 5 6.3 5 8s1.3 3 3 3zM8 13c-2.7 0-8 1.3-8 4v2h16v-2c0-2.7-5.3-4-8-4zM16 13c-.3 0-.7 0-1 .1 1.1.9 1.8 2 1.8 3.4V19h6v-2c0-2.7-5.3-4-8.8-4z"/></svg>
+                  <svg *ngSwitchCase="'Careers'" class="icon" viewBox="0 0 24 24"><path d="M6 2h12v4H6zM4 8h16v12H4z"/></svg>
+                  <svg *ngSwitchCase="'Contact'" class="icon" viewBox="0 0 24 24"><path d="M2 4h20v16H2zM4 6v12h16V6L12 11 4 6z"/></svg>
+                  <svg *ngSwitchDefault class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+                </ng-container>
+              </span>
+              {{ link.label }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Services Column -->
+      <div class="footer-column">
+        <h4>Our Services</h4>
+        <ul class="footer-links services-list">
+          <li *ngFor="let service of services; trackBy: trackByFn">
+            <a [routerLink]="['/services']" [queryParams]="{ service: service }">
+              <span class="service-dot"></span>
+              {{ service }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Column -->
+      <div class="footer-column contact-column">
+        <h4>Get in Touch</h4>
+        
+        <div class="contact-item">
+          <span class="contact-icon" aria-hidden>
+            <svg class="icon" viewBox="0 0 24 24"><path d="M2 4h20v16H2zM4 6v12h16V6l-8 5L4 6z"/></svg>
+          </span>
+          <div>
+            <span class="contact-label">Email</span>
+            <a href="mailto:{{ contactInfo.email }}" class="contact-value">{{ contactInfo.email }}</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon" aria-hidden>
+            <svg class="icon" viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.2c1.1.4 2.3.6 3.5.6a1 1 0 0 1 1 1v3.6a1 1 0 0 1-1 1A18 18 0 0 1 2 6a1 1 0 0 1 1-1h3.6a1 1 0 0 1 1 1c0 1.2.2 2.4.6 3.5.2.4 0 .9-.2 1.1L6.6 10.8z"/></svg>
+          </span>
+          <div>
+            <span class="contact-label">Phone</span>
+            <a href="tel:{{ contactInfo.phone }}" class="contact-value">{{ contactInfo.phone }}</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon" aria-hidden>
+            <svg class="icon" viewBox="0 0 24 24"><path d="M20 2H4a2 2 0 0 0-2 2v14l4-2h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>
+          </span>
+          <div>
+            <span class="contact-label">WhatsApp</span>
+            <a href="https://wa.me/{{ contactInfo.whatsapp.replace(/[^0-9]/g, '') }}" 
+               target="_blank" 
+               class="contact-value whatsapp">
+              {{ contactInfo.whatsapp }}
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon" aria-hidden>
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          </span>
+          <div>
+            <span class="contact-label">Location</span>
+            <span class="contact-value">{{ contactInfo.address }}</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon" aria-hidden>
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 1a11 11 0 1 0 11 11A11 11 0 0 0 12 1zm1 12.6V6h-2v7.2l5.4 3.2 1-1.6L13 13.6z"/></svg>
+          </span>
+          <div>
+            <span class="contact-label">Working Hours</span>
+            <span class="contact-value">{{ contactInfo.workingHours }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Newsletter Section -->
+    <div class="newsletter-section">
+      <div class="newsletter-content">
+        <div class="newsletter-text">
+          <span class="newsletter-icon" aria-hidden>
+            <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM4 6l8 5 8-5v2l-8 5L4 8V6z"/></svg>
+          </span>
+          <div>
+            <h4>Stay Updated</h4>
+            <p>Subscribe to our newsletter for fundraising insights & updates</p>
+          </div>
+        </div>
+        <form class="newsletter-form" (ngSubmit)="onSubmitForm($event)">
+          <div class="form-group">
+            <input 
+              type="email" 
+              [(ngModel)]="formData.email" 
+              name="email"
+              placeholder="Enter your email" 
+              required
+              [class.error]="submitError"
+              [class.success]="submitSuccess">
+            <button type="submit" [disabled]="isSubmitting">
+              <span *ngIf="!isSubmitting">Subscribe</span>
+              <span *ngIf="isSubmitting" class="spinner"></span>
+            </button>
+          </div>
+          <div class="form-message">
+            <span *ngIf="submitSuccess" class="success-message">✅ Subscribed successfully!</span>
+            <span *ngIf="submitError" class="error-message">❌ Something went wrong. Please try again.</span>
+          </div>
+          <label class="checkbox-label">
+            <input type="checkbox" [(ngModel)]="formData.subscribed" name="subscribed">
+            <span class="checkmark"></span>
+            I agree to receive marketing emails
+          </label>
+        </form>
+      </div>
+    </div>
+
+    <!-- Legal & Bottom Bar -->
+    <div class="footer-bottom">
+      <div class="legal-links">
+        <a *ngFor="let page of legalPages; trackBy: trackByFn" 
+           [routerLink]="page.path"
+           routerLinkActive="active">
+          {{ page.label }}
+        </a>
+      </div>
+      <div class="copyright">
+        <span>© {{ currentYear }} FundGen Z. All rights reserved.</span>
+        <span class="separator">|</span>
+        <span class="credit">Made with ❤️ in India</span>
+      </div>
+      <button class="back-to-top" (click)="scrollToTop()" title="Back to top">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+      </button>
+    </div>
+  </div>
+</footer>

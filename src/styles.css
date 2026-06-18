@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global reset to ensure full-bleed sections render correctly */
+html, body, app-root {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+*, *::before, *::after { box-sizing: inherit; }
+
+/* Ensure background and sections can span full viewport width */
+body { background: #000; }
+
+/* Layout: make app-root a column flex container so footer can stick to bottom
+	 when page content is short (sticky footer pattern). */
+app-root {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+/* Let all immediate children except footer expand to fill available space */
+app-root > *:not(footer) {
+	flex: 1 0 auto;
+}
+
+/* Ensure footer sits at the end */
+.footer {
+	margin-top: auto;
+}

@@ -1,0 +1,46 @@
+<!-- TOP NAVIGATION -->
+<nav class="navbar" [class.scrolled]="isScrolled">
+  <div class="nav-container">
+    <!-- Logo -->
+    <div class="nav-logo">
+      <a href="#">
+        <span class="logo-icon">✦</span>
+        <span class="logo-text">Fund<span>GenZ</span></span>
+      </a>
+    </div>
+
+    <!-- Navigation Links -->
+    <ul class="nav-menu" [class.active]="isMenuOpen">
+      <li class="nav-item">
+        <a href="#home" class="nav-link active">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="#about" class="nav-link">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a href="#services" class="nav-link">Services</a>
+      </li>
+      <li class="nav-item">
+        <a href="#register" class="nav-link">Register</a>
+      </li>
+      <li class="nav-item">
+        <a href="#contact" class="nav-link">Contact</a>
+      </li>
+    </ul>
+
+    <!-- CTA Button -->
+    <div class="nav-cta">
+      <button class="cta-button">Get Started</button>
+    </div>
+
+    <!-- Mobile Hamburger Menu -->
+    <div class="hamburger" (click)="toggleMenu()" [class.active]="isMenuOpen">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<!-- Hero moved to its own component (`Hero`) and is rendered via routing -->
